@@ -21,6 +21,7 @@ A flexible, data-driven dialogue system for Unreal Engine designed to handle bra
 
 ## C++ Dialogue Backend Location in Project
 
+To see the C++ extensions I have made beyond the boilerplate Unreal FPS template, follow the path below:
 ```
 Content/Source/FP_DialogueSystem/DialogueSystem
 ```
@@ -29,10 +30,10 @@ Content/Source/FP_DialogueSystem/DialogueSystem
 
 ## How It Works
 
-1. **Dialogue Data** is defined in a Data Table using a custom `FDialogueRow` struct — each row contains speaker name, dialogue text, response options, and optional event tags.
-2. **The Dialogue Manager** (a Game Instance subsystem or Actor component) reads from the Data Table and drives the conversation flow.
-3. **NPC Actors** hold a reference to their starting dialogue row key. On interaction, they pass this to the Dialogue Manager.
-4. **The Dialogue Widget** renders the current line and player choices, and calls back into the Manager on player selection.
+1. Formatted JSON files include the raw dialogue data for each choice in a quest.
+2. Quests get parsed from JSON files, live during runtime and wait for a callback (OnDialogueUIOpened)
+3. Quests hand off their current state and choice data to Dialogue UI for display.
+4. Player interacts with NPC, modifies quest state independently.
 
 ---
 
